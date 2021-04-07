@@ -3,13 +3,26 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     
-    @IBOutlet weak var conditionImageView: UIImageView!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var searchTextField: UITextField!
+    var searchTextField: UITextField!
+    var locationButton: UIButton!
+    var searchButton: UIButton!
+    
+    var conditionImageView: UIImageView!
+    var temperatureLabel: UILabel!
+    var cityLabel: UILabel!
     
     var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
+    
+    override func loadView() {
+        view = UIView()
+        
+        setBackgroundImage(imageName: "background")
+        setupView()
+        
+        searchButton.addTarget(self, action: #selector(searchPressed), for: .touchUpInside)
+        locationButton.addTarget(self, action: #selector(locationPressed), for: .touchUpInside)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +35,11 @@ class WeatherViewController: UIViewController {
         searchTextField.delegate = self
     }
     
-    @IBAction func locationPressed(_ sender: UIButton) {
+    @objc func searchPressed(_ sender: UIButton) {
+        searchTextField.endEditing(true)
+    }
+    
+    @objc func locationPressed(_ sender: UIButton) {
         locationManager.requestLocation()
     }
 }
@@ -30,10 +47,6 @@ class WeatherViewController: UIViewController {
 //MARK: - UITextFieldDelegate
 
 extension WeatherViewController: UITextFieldDelegate {
-    
-    @IBAction func searchPressed(_ sender: UIButton) {
-        searchTextField.endEditing(true)
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.endEditing(true)

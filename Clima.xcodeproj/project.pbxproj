@@ -12,11 +12,11 @@
 		3C097220261D8402000E081E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09721D261D8402000E081E /* WeatherModel.swift */; };
 		3C097221261D8402000E081E /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09721E261D8402000E081E /* WeatherManager.swift */; };
 		3C097224261D853F000E081E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3C097223261D853F000E081E /* .gitignore */; };
+		3C0FC9C1261DC72100BCDB6F /* WeatherViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0FC9C0261DC72100BCDB6F /* WeatherViewBuilder.swift */; };
 		3C39F32B261D95B2007449BC /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C39F32A261D95B2007449BC /* TokenProvider.swift */; };
 		ADAA27B1231BBFAF00365194 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA27B0231BBFAF00365194 /* AppDelegate.swift */; };
 		ADAA27B3231BBFAF00365194 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA27B2231BBFAF00365194 /* SceneDelegate.swift */; };
 		ADAA27B5231BBFAF00365194 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA27B4231BBFAF00365194 /* WeatherViewController.swift */; };
-		ADAA27B8231BBFAF00365194 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADAA27B6231BBFAF00365194 /* Main.storyboard */; };
 		ADAA27BD231BBFB300365194 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADAA27BB231BBFB300365194 /* LaunchScreen.storyboard */; };
 		ADAA27CE231BC87F00365194 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ADAA27CD231BC87F00365194 /* README.md */; };
 /* End PBXBuildFile section */
@@ -27,12 +27,12 @@
 		3C09721D261D8402000E081E /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		3C09721E261D8402000E081E /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		3C097223261D853F000E081E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		3C0FC9C0261DC72100BCDB6F /* WeatherViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewBuilder.swift; sourceTree = "<group>"; };
 		3C39F32A261D95B2007449BC /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		ADAA27AD231BBFAF00365194 /* Clima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAA27B0231BBFAF00365194 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADAA27B2231BBFAF00365194 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ADAA27B4231BBFAF00365194 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		ADAA27B7231BBFAF00365194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ADAA27BC231BBFB300365194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADAA27BE231BBFB300365194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADAA27CD231BC87F00365194 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -84,7 +84,6 @@
 				ADAA27B0231BBFAF00365194 /* AppDelegate.swift */,
 				ADAA27B2231BBFAF00365194 /* SceneDelegate.swift */,
 				3C09721B261D8402000E081E /* Model */,
-				ADAA27C9231BC3F200365194 /* View */,
 				ADAA27C8231BC3E500365194 /* Controller */,
 				3C06DBE12615F0EE00E859BE /* Assets.xcassets */,
 				ADAA27BB231BBFB300365194 /* LaunchScreen.storyboard */,
@@ -97,16 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				ADAA27B4231BBFAF00365194 /* WeatherViewController.swift */,
+				3C0FC9C0261DC72100BCDB6F /* WeatherViewBuilder.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		ADAA27C9231BC3F200365194 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				ADAA27B6231BBFAF00365194 /* Main.storyboard */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +162,6 @@
 				3C097224261D853F000E081E /* .gitignore in Resources */,
 				ADAA27CE231BC87F00365194 /* README.md in Resources */,
 				ADAA27BD231BBFB300365194 /* LaunchScreen.storyboard in Resources */,
-				ADAA27B8231BBFAF00365194 /* Main.storyboard in Resources */,
 				3C06DBE22615F0EE00E859BE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,6 +178,7 @@
 				ADAA27B1231BBFAF00365194 /* AppDelegate.swift in Sources */,
 				3C097221261D8402000E081E /* WeatherManager.swift in Sources */,
 				3C097220261D8402000E081E /* WeatherModel.swift in Sources */,
+				3C0FC9C1261DC72100BCDB6F /* WeatherViewBuilder.swift in Sources */,
 				3C39F32B261D95B2007449BC /* TokenProvider.swift in Sources */,
 				ADAA27B3231BBFAF00365194 /* SceneDelegate.swift in Sources */,
 			);
@@ -195,14 +187,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ADAA27B6231BBFAF00365194 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ADAA27B7231BBFAF00365194 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ADAA27BB231BBFB300365194 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
