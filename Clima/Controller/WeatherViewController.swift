@@ -35,12 +35,20 @@ class WeatherViewController: UIViewController {
         searchTextField.delegate = self
     }
     
-    @objc func searchPressed(_ sender: UIButton) {
+    @objc private func searchPressed(_ sender: UIButton) {
         searchTextField.endEditing(true)
     }
     
-    @objc func locationPressed(_ sender: UIButton) {
+    @objc private func locationPressed(_ sender: UIButton) {
         locationManager.requestLocation()
+    }
+    
+    private func displayAlert(_ errorMessage: String) {
+        DispatchQueue.main.async { [self] in
+            let alert = UIAlertController(title: "ErrorTitle".localize(), message: errorMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OkTitle".localize(), style: .default))
+            present(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -54,12 +62,7 @@ extension WeatherViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField.text != "" {
-            return true
-        } else {
-            textField.placeholder = "Type something"
-            return false
-        }
+        return textField.text != ""
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -84,7 +87,7 @@ extension WeatherViewController: WeatherManagerDelegate {
     }
     
     func didFail(_ errorMessage: String) {
-        print(errorMessage)
+        displayAlert(errorMessage)
     }
 }
 
@@ -102,6 +105,6 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        displayAlert(error.localizedDescription)
     }
 }

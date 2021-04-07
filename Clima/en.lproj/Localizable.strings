@@ -1,0 +1,8 @@
+"SearchPlaceholder" = "Search";
+"ErrorTitle" = "Error";
+"DefaultCity" = "London";
+
+//non-translatable
+"OkTitle" = "OK";
+"DefaultTemperature" = "21";
+"TemperatureUnit" = "°C";
