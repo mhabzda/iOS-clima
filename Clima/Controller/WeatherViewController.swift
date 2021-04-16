@@ -11,6 +11,8 @@ class WeatherViewController: UIViewController {
     var temperatureLabel: UILabel!
     var cityLabel: UILabel!
     
+    var loadingSpinnerView: UIView!
+    
     var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
     
@@ -68,6 +70,7 @@ extension WeatherViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city = textField.text {
             weatherManager.fetchWeather(cityName: city)
+            showLoadingSpinner()
         }
         
         searchTextField.text = ""
@@ -83,11 +86,13 @@ extension WeatherViewController: WeatherManagerDelegate {
             conditionImageView.image = UIImage(systemName: weather.conditionName)
             temperatureLabel.text = weather.temperatureText
             cityLabel.text = weather.cityName
+            hideLoadingSpinner()
         }
     }
     
     func didFail(_ errorMessage: String) {
         displayAlert(errorMessage)
+        hideLoadingSpinner()
     }
 }
 
@@ -101,10 +106,34 @@ extension WeatherViewController: CLLocationManagerDelegate {
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
             weatherManager.fetchWeather(latitude: latitude, longitude: longitude)
+            showLoadingSpinner()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         displayAlert(error.localizedDescription)
+    }
+}
+
+//MARK: - SpinnerController
+
+extension WeatherViewController {
+    
+    private func showLoadingSpinner() {
+        loadingSpinnerView = UIView(frame: view.bounds)
+        loadingSpinnerView.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
+        let loadingIndicator = UIActivityIndicatorView.init(style: .large)
+        loadingIndicator.startAnimating()
+        loadingIndicator.center = loadingSpinnerView.center
+        loadingSpinnerView.addSubview(loadingIndicator)
+        
+        view.addSubview(loadingSpinnerView)
+    }
+    
+    private func hideLoadingSpinner() {
+        DispatchQueue.main.async { [self] in
+            loadingSpinnerView?.removeFromSuperview()
+            loadingSpinnerView = nil
+        }
     }
 }
