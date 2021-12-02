@@ -1,6 +1,6 @@
 import Foundation
 
-protocol WeatherManagerDelegate {
+protocol WeatherManagerDelegate: AnyObject {
     func didUpdateWeather(_ weather: WeatherModel)
     func didFail(_ errorMessage: String)
 }
@@ -9,7 +9,7 @@ struct WeatherManager {
     
     private let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(apiToken)&units=metric"
     
-    var delegate: WeatherManagerDelegate?
+    weak var delegate: WeatherManagerDelegate?
     
     func fetchWeather(cityName: String) {
         let urlCityName = cityName.replacingOccurrences(of: " ", with: "+")
