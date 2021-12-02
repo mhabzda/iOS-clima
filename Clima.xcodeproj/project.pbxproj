@@ -16,6 +16,7 @@
 		3C39F32B261D95B2007449BC /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C39F32A261D95B2007449BC /* TokenProvider.swift */; };
 		3C499770261DE95B000A5FF3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C499772261DE95B000A5FF3 /* Localizable.strings */; };
 		3C499778261DEFF7000A5FF3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C499777261DEFF7000A5FF3 /* StringExtension.swift */; };
+		3CE528862758EF1E002A943E /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE528852758EF1E002A943E /* Localized.swift */; };
 		ADAA27B1231BBFAF00365194 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA27B0231BBFAF00365194 /* AppDelegate.swift */; };
 		ADAA27B3231BBFAF00365194 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA27B2231BBFAF00365194 /* SceneDelegate.swift */; };
 		ADAA27B5231BBFAF00365194 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA27B4231BBFAF00365194 /* WeatherViewController.swift */; };
@@ -33,6 +34,7 @@
 		3C39F32A261D95B2007449BC /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		3C499771261DE95B000A5FF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3C499777261DEFF7000A5FF3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		3CE528852758EF1E002A943E /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		ADAA27AD231BBFAF00365194 /* Clima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAA27B0231BBFAF00365194 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADAA27B2231BBFAF00365194 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3CE528832758EEBD002A943E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3CE528842758EEBD002A943E /* Localization */,
+			);
+			name = Resources;
+			path = Clima/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		3CE528842758EEBD002A943E /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				3C499777261DEFF7000A5FF3 /* StringExtension.swift */,
+				3C499772261DE95B000A5FF3 /* Localizable.strings */,
+				3CE528852758EF1E002A943E /* Localized.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		ADAA27A4231BBFAF00365194 = {
 			isa = PBXGroup;
 			children = (
@@ -87,12 +108,12 @@
 			children = (
 				ADAA27B0231BBFAF00365194 /* AppDelegate.swift */,
 				ADAA27B2231BBFAF00365194 /* SceneDelegate.swift */,
+				3CE528832758EEBD002A943E /* Resources */,
 				3C09721B261D8402000E081E /* Model */,
 				ADAA27C8231BC3E500365194 /* Controller */,
 				3C06DBE12615F0EE00E859BE /* Assets.xcassets */,
 				ADAA27BB231BBFB300365194 /* LaunchScreen.storyboard */,
 				ADAA27BE231BBFB300365194 /* Info.plist */,
-				3C499772261DE95B000A5FF3 /* Localizable.strings */,
 			);
 			path = Clima;
 			sourceTree = "<group>";
@@ -102,7 +123,6 @@
 			children = (
 				ADAA27B4231BBFAF00365194 /* WeatherViewController.swift */,
 				3C0FC9C0261DC72100BCDB6F /* WeatherViewBuilder.swift */,
-				3C499777261DEFF7000A5FF3 /* StringExtension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,6 +205,7 @@
 				ADAA27B1231BBFAF00365194 /* AppDelegate.swift in Sources */,
 				3C097221261D8402000E081E /* WeatherManager.swift in Sources */,
 				3C097220261D8402000E081E /* WeatherModel.swift in Sources */,
+				3CE528862758EF1E002A943E /* Localized.swift in Sources */,
 				3C499778261DEFF7000A5FF3 /* StringExtension.swift in Sources */,
 				3C0FC9C1261DC72100BCDB6F /* WeatherViewBuilder.swift in Sources */,
 				3C39F32B261D95B2007449BC /* TokenProvider.swift in Sources */,

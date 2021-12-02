@@ -47,8 +47,8 @@ class WeatherViewController: UIViewController {
     
     private func displayAlert(_ errorMessage: String) {
         DispatchQueue.main.async { [self] in
-            let alert = UIAlertController(title: "ErrorTitle".localize(), message: errorMessage, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OkTitle".localize(), style: .default))
+            let alert = UIAlertController(title: Localized.Weather.errorTitle, message: errorMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.Weather.okTitle, style: .default))
             present(alert, animated: true, completion: nil)
         }
     }

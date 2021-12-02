@@ -56,7 +56,7 @@ extension WeatherViewController {
         let stackView = createStackView(axis: .horizontal, spacing: 10)
         
         searchTextField = UITextField()
-        searchTextField.placeholder = "SearchPlaceholder".localize()
+        searchTextField.placeholder = Localized.Weather.searchPlaceholder
         searchTextField.font = .systemFont(ofSize: 25)
         searchTextField.borderStyle = .roundedRect
         searchTextField.autocapitalizationType = .words
@@ -85,21 +85,21 @@ extension WeatherViewController {
     private func createTemperatureValueLabel() -> UILabel {
         temperatureLabel = UILabel()
         temperatureLabel.font = .systemFont(ofSize: 80, weight: .black)
-        temperatureLabel.text = "DefaultTemperature".localize()
+        temperatureLabel.text = Localized.Weather.defaultTemperature
         return temperatureLabel
     }
     
     private func createTemperatureUnitLabel() -> UILabel {
         let temperatureUnitLabel = UILabel()
         temperatureUnitLabel.font = .systemFont(ofSize: 100, weight: .light)
-        temperatureUnitLabel.text = "TemperatureUnit".localize()
+        temperatureUnitLabel.text = Localized.Weather.temperatureUnit
         return temperatureUnitLabel
     }
     
     private func createCityLabel() -> UILabel {
         cityLabel = UILabel()
         cityLabel.font = .systemFont(ofSize: 30)
-        cityLabel.text = "DefaultCity".localize()
+        cityLabel.text = Localized.Weather.defaultCity
         return cityLabel
     }
     
