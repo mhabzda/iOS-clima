@@ -11,23 +11,19 @@ class WeatherViewController: UIViewController {
     var temperatureLabel: UILabel!
     var cityLabel: UILabel!
     
-    var loadingSpinnerView: UIView!
+    private var loadingSpinnerView: UIView!
     
-    var weatherManager = WeatherManager()
-    let locationManager = CLLocationManager()
+    private var weatherManager = WeatherManager()
+    private let locationManager = CLLocationManager()
     
-    override func loadView() {
-        view = UIView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         setBackgroundImage(imageName: "background")
         setupView()
         
         searchButton.addTarget(self, action: #selector(searchPressed), for: .touchUpInside)
         locationButton.addTarget(self, action: #selector(locationPressed), for: .touchUpInside)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
