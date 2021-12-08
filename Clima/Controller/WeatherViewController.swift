@@ -3,13 +3,11 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     
-    var searchTextField: UITextField!
-    var locationButton: UIButton!
-    var searchButton: UIButton!
-    
     var conditionImageView: UIImageView!
     var temperatureLabel: UILabel!
     var cityLabel: UILabel!
+    
+    var searchStackView: SearchStackView!
     
     private var loadingSpinnerView: UIView!
     
@@ -22,23 +20,16 @@ class WeatherViewController: UIViewController {
         setBackgroundImage(imageName: "background")
         setupView()
         
-        searchButton.addTarget(self, action: #selector(searchPressed), for: .touchUpInside)
-        locationButton.addTarget(self, action: #selector(locationPressed), for: .touchUpInside)
+        searchStackView.addSearchTextFieldDelegate(delegate: self)
+        searchStackView.addLocationButtonAction { [unowned self] in
+            self.locationManager.requestLocation()
+        }
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.requestLocation()
         
         weatherManager.delegate = self
-        searchTextField.delegate = self
-    }
-    
-    @objc private func searchPressed(_ sender: UIButton) {
-        searchTextField.endEditing(true)
-    }
-    
-    @objc private func locationPressed(_ sender: UIButton) {
-        locationManager.requestLocation()
     }
     
     private func displayAlert(_ errorMessage: String) {
@@ -55,7 +46,7 @@ class WeatherViewController: UIViewController {
 extension WeatherViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchTextField.endEditing(true)
+        textField.endEditing(true)
         return true
     }
     
@@ -69,7 +60,7 @@ extension WeatherViewController: UITextFieldDelegate {
             showLoadingSpinner()
         }
         
-        searchTextField.text = ""
+        textField.text = ""
     }
 }
 

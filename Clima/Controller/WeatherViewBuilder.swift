@@ -29,7 +29,7 @@ extension WeatherViewController {
             mainStackView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
         ])
         
-        let searchStackView = createSearchStackView()
+        searchStackView = SearchStackView()
         searchStackView.translatesAutoresizingMaskIntoConstraints = false
         mainStackView.addArrangedSubview(searchStackView)
         NSLayoutConstraint.activate([
@@ -50,28 +50,6 @@ extension WeatherViewController {
         
         mainStackView.addArrangedSubview(createCityLabel())
         mainStackView.addArrangedSubview(UIView())
-    }
-    
-    private func createSearchStackView() -> UIStackView {
-        let stackView = createStackView(axis: .horizontal, spacing: 10)
-        
-        searchTextField = UITextField()
-        searchTextField.placeholder = Localized.Weather.searchPlaceholder
-        searchTextField.font = .systemFont(ofSize: 25)
-        searchTextField.borderStyle = .roundedRect
-        searchTextField.autocapitalizationType = .words
-        searchTextField.returnKeyType = .go
-        searchTextField.textAlignment = .right
-        searchTextField.backgroundColor = .systemFill
-        
-        locationButton = createButton(backgroundImageName: "location.circle.fill")
-        searchButton = createButton(backgroundImageName: "magnifyingglass")
-        
-        stackView.addArrangedSubview(locationButton)
-        stackView.addArrangedSubview(searchTextField)
-        stackView.addArrangedSubview(searchButton)
-        
-        return stackView
     }
     
     private func createConditionImageView() -> UIImageView {
@@ -108,17 +86,5 @@ extension WeatherViewController {
         stackView.axis = axis
         stackView.spacing = CGFloat(spacing)
         return stackView
-    }
-    
-    private func createButton(backgroundImageName: String) -> UIButton {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(systemName: backgroundImageName), for: .normal)
-        button.tintColor = .label
-        NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalToConstant: 40),
-            button.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        return button
     }
 }
