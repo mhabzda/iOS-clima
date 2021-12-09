@@ -3,12 +3,7 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     
-    var conditionImageView: UIImageView!
-    var temperatureLabel: UILabel!
-    var cityLabel: UILabel!
-    
-    var searchStackView: SearchStackView!
-    
+    private var mainStackView: MainStackView!
     private var loadingSpinnerView: UIView!
     
     private var weatherManager = WeatherManager()
@@ -18,18 +13,44 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         setBackgroundImage(imageName: "background")
-        setupView()
-        
-        searchStackView.addSearchTextFieldDelegate(delegate: self)
-        searchStackView.addLocationButtonAction { [unowned self] in
-            self.locationManager.requestLocation()
-        }
+        setupMainStackView()
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.requestLocation()
         
         weatherManager.delegate = self
+    }
+    
+    private func setBackgroundImage(imageName: String) {
+        let backgroundImageView = BackgroundImageView(image: UIImage(named: imageName))
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.insertSubview(backgroundImageView, at: 0)
+        
+        NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    private func setupMainStackView() {
+        mainStackView = MainStackView()
+        mainStackView.alignment = .trailing
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(mainStackView)
+        NSLayoutConstraint.activate([
+            mainStackView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            mainStackView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
+        ])
+        
+        mainStackView.addSearchTextFieldDelegate(delegate: self)
+        mainStackView.addLocationButtonAction { [unowned self] in
+            self.locationManager.requestLocation()
+        }
     }
     
     private func displayAlert(_ errorMessage: String) {
@@ -70,9 +91,9 @@ extension WeatherViewController: WeatherManagerDelegate {
     
     func didUpdateWeather(_ weather: WeatherModel) {
         DispatchQueue.main.async { [self] in
-            conditionImageView.image = UIImage(systemName: weather.conditionName)
-            temperatureLabel.text = weather.temperatureText
-            cityLabel.text = weather.cityName
+            mainStackView.setConditionImage(conditionImageName: weather.conditionName)
+            mainStackView.setTemperature(temperature: weather.temperatureText)
+            mainStackView.setCity(city: weather.cityName)
             hideLoadingSpinner()
         }
     }
